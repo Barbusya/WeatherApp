@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">WeatherApp</string>
+    <string name="location">Location</string>
+    <string name="locations">Locations</string>
+    <string name="search">Search</string>
+    <string name="clear_search">Clear</string>
+    <string name="favorite">Favorite</string>
+    <string name="data">Data</string>
+    <string name="temp">Temp</string>
+</resources>

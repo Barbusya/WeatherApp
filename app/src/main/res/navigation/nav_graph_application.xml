@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph_application"
+    app:startDestination="@id/fragmentWeather">
+
+    <fragment
+        android:id="@+id/fragmentWeather"
+        android:name="com.barbusya.android.weatherapp.screens.WeatherFragment"
+        android:label="FragmentWeather" >
+        <action
+            android:id="@+id/action_fragmentWeather_to_fragmentFavoriteLocations"
+            app:destination="@id/fragmentFavoriteLocations" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentFavoriteLocations"
+        android:name="com.barbusya.android.weatherapp.screens.FavoriteLocationsFragment"
+        android:label="FragmentFavoriteLocations" />
+</navigation>
