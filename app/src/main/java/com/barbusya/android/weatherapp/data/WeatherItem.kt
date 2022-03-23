@@ -6,6 +6,6 @@ data class WeatherItem(
     var localTime: String,
     var currentTemperature: String,
     var currentConditionText: String,
-//    var maxTemp: String,
-//    var minTemp: String,
+    var maxTemp: String,
+    var minTemp: String,
 )

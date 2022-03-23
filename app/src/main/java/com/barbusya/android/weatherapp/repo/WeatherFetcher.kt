@@ -65,26 +65,26 @@ class WeatherFetcher {
                 val weatherResponse: WeatherResponse? = response.body()
                 val location: Location? = weatherResponse?.location
                 val current: Current? = weatherResponse?.current
-//                val forecast: Forecast? = weatherResponse?.forecast
+                val forecast: Forecast? = weatherResponse?.forecast
                 val currentCondition: CurrentCondition? = current?.currentCondition
-//                var forecastDays: List<ForecastDays> =
-//                    forecast?.forecastDays ?: mutableListOf()
-//                var days: Days? = forecastDays[0].days
+                var forecastDays: List<ForecastDays> =
+                    forecast?.forecastDays ?: mutableListOf()
+                var days: Days? = forecastDays[0].days
                 val weatherItem = WeatherItem(
                     location = location?.city.toString(),
                     localTime = getNormalDate(location?.localTime),
                     currentTemperature = current?.temperature.toString() + "°",
                     currentConditionText = currentCondition?.currentConditionText.toString(),
-//                    maxTemp = days?.maxTempC.toString() + "°",
-//                    minTemp = days?.minTempC.toString()  + "°",
+                    maxTemp = days?.maxTempC.toString() + "°",
+                    minTemp = days?.minTempC.toString()  + "°",
                 )
                 responseLiveData.value = mutableListOf<String>(
                     weatherItem.component1(),
                     weatherItem.component2(),
                     weatherItem.component3(),
                     weatherItem.component4(),
-//                    weatherItem.component5(),
-//                    weatherItem.component6(),
+                    weatherItem.component5(),
+                    weatherItem.component6(),
                 )
             }
         })

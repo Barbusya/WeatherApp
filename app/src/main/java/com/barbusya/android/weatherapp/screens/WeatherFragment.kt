@@ -38,8 +38,8 @@ class WeatherFragment: Fragment(R.layout.fragment_weather) {
             binding.data.text = weatherItem[1]
             binding.temp.text = weatherItem[2]
             binding.weatherDescription.text = weatherItem[3]
-//            binding.maxTemp.text = weatherItem[4]
-//            binding.minTemp.text = weatherItem[5]
+            binding.maxTemp.text = weatherItem[4]
+            binding.minTemp.text = weatherItem[5]
             }
     }
 
