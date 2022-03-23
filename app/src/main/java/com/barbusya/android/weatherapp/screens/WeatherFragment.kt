@@ -34,9 +34,12 @@ class WeatherFragment: Fragment(R.layout.fragment_weather) {
         super.onViewCreated(view, savedInstanceState)
         weatherViewModel.weatherItemLiveData.observe(
             viewLifecycleOwner) { weatherItem ->
-                binding.location.text = weatherItem[0]
-                binding.data.text = weatherItem[1]
-                binding.temp.text = weatherItem[2]
+            binding.location.text = weatherItem[0]
+            binding.data.text = weatherItem[1]
+            binding.temp.text = weatherItem[2]
+            binding.weatherDescription.text = weatherItem[3]
+//            binding.maxTemp.text = weatherItem[4]
+//            binding.minTemp.text = weatherItem[5]
             }
     }
 

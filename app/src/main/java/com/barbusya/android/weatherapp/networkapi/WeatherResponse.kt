@@ -1,12 +1,16 @@
 package com.barbusya.android.weatherapp.networkapi
 
-import com.barbusya.android.weatherapp.data.CurrentItem
-import com.barbusya.android.weatherapp.data.LocationItem
+import com.barbusya.android.weatherapp.data.Current
+//import com.barbusya.android.weatherapp.data.Forecast
+import com.barbusya.android.weatherapp.data.Location
 import com.google.gson.annotations.SerializedName
 
 class WeatherResponse {
     @SerializedName("location")
-    lateinit var locationItem: LocationItem
+    var location: Location? = null
     @SerializedName("current")
-    lateinit var currentItem: CurrentItem
+    var current: Current? = null
+//    @SerializedName("forecast")
+//    var forecast: Forecast? = null
+
 }

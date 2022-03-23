@@ -3,9 +3,7 @@ package com.barbusya.android.weatherapp.repo
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.barbusya.android.weatherapp.data.CurrentItem
-import com.barbusya.android.weatherapp.data.LocationItem
-import com.barbusya.android.weatherapp.data.WeatherItem
+import com.barbusya.android.weatherapp.data.*
 import com.barbusya.android.weatherapp.networkapi.WeatherApi
 import com.barbusya.android.weatherapp.networkapi.WeatherInterceptor
 import com.barbusya.android.weatherapp.networkapi.WeatherResponse
@@ -15,6 +13,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.text.SimpleDateFormat
 
 private const val TAG = "WeatherFetcher"
 
@@ -44,6 +43,11 @@ class WeatherFetcher {
         return fetchWeatherMetadata(weatherApi.searchWeather(query))
     }
 
+    fun getNormalDate(timeInMillies: Int?): String {
+        val formatter = SimpleDateFormat("dd.MM.yyyy hh:mm")
+        return formatter.format(timeInMillies?.toLong()?.times(1000))
+    }
+
     private fun fetchWeatherMetadata(weatherRequest: Call<WeatherResponse>):
             LiveData<MutableList<String>> {
         val responseLiveData: MutableLiveData<MutableList<String>> = MutableLiveData()
@@ -59,17 +63,28 @@ class WeatherFetcher {
             ) {
                 Log.d(TAG, "Response received")
                 val weatherResponse: WeatherResponse? = response.body()
-                val locationItem: LocationItem? = weatherResponse?.locationItem
-                val currentItem: CurrentItem? = weatherResponse?.currentItem
+                val location: Location? = weatherResponse?.location
+                val current: Current? = weatherResponse?.current
+//                val forecast: Forecast? = weatherResponse?.forecast
+                val currentCondition: CurrentCondition? = current?.currentCondition
+//                var forecastDays: List<ForecastDays> =
+//                    forecast?.forecastDays ?: mutableListOf()
+//                var days: Days? = forecastDays[0].days
                 val weatherItem = WeatherItem(
-                    location = locationItem?.city.toString(),
-                    localTime = locationItem?.localTime.toString(),
-                    currentTemperature = currentItem?.temperature.toString()
+                    location = location?.city.toString(),
+                    localTime = getNormalDate(location?.localTime),
+                    currentTemperature = current?.temperature.toString() + "°",
+                    currentConditionText = currentCondition?.currentConditionText.toString(),
+//                    maxTemp = days?.maxTempC.toString() + "°",
+//                    minTemp = days?.minTempC.toString()  + "°",
                 )
                 responseLiveData.value = mutableListOf<String>(
                     weatherItem.component1(),
                     weatherItem.component2(),
-                    weatherItem.component3()
+                    weatherItem.component3(),
+                    weatherItem.component4(),
+//                    weatherItem.component5(),
+//                    weatherItem.component6(),
                 )
             }
         })
