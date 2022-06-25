@@ -4,13 +4,15 @@ import com.google.gson.annotations.SerializedName
 
 data class Current(
     @SerializedName("temp_c")
-    var temperature: Int = 0,
+    val temperature: Float = 0f,
     @SerializedName("condition")
-    var currentCondition: CurrentCondition? = null,
+    val currentCondition: CurrentCondition? = null,
+    @SerializedName("feelslike_c")
+    val feelsLike: Float = 0f,
 )
 
 data class CurrentCondition(
     @SerializedName("text")
-    var currentConditionText: String = "",
+    val currentConditionText: String = "",
 
 )

@@ -21,7 +21,7 @@ class WeatherFragment: Fragment(R.layout.fragment_weather) {
     private val binding by viewBinding(FragmentWeatherBinding::bind)
 
     private val weatherViewModel: WeatherViewModel by lazy {
-        ViewModelProvider(this).get(WeatherViewModel::class.java)
+        ViewModelProvider(this)[WeatherViewModel::class.java]
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,13 +33,14 @@ class WeatherFragment: Fragment(R.layout.fragment_weather) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         weatherViewModel.weatherItemLiveData.observe(
-            viewLifecycleOwner) { weatherItem ->
-            binding.location.text = weatherItem[0]
-            binding.data.text = weatherItem[1]
-            binding.temp.text = weatherItem[2]
-            binding.weatherDescription.text = weatherItem[3]
-            binding.maxTemp.text = weatherItem[4]
-            binding.minTemp.text = weatherItem[5]
+            viewLifecycleOwner) { weather ->
+            binding.location.text = weather[0]
+            binding.data.text = weather[1]
+            binding.temp.text = weather[2]
+            binding.weatherDescription.text = weather[3]
+            binding.feelsLikeTemp.text = weather[4]
+            binding.maxTemp.text = weather[5]
+            binding.minTemp.text = weather[6]
             }
     }
 

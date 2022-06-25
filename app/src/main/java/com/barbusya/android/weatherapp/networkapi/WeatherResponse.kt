@@ -7,9 +7,9 @@ import com.google.gson.annotations.SerializedName
 
 class WeatherResponse {
     @SerializedName("location")
-    var location: Location? = null
+    val location: Location? = null
     @SerializedName("current")
-    var current: Current? = null
+    val current: Current? = null
     @SerializedName("forecast")
     var forecast: Forecast? = null
 

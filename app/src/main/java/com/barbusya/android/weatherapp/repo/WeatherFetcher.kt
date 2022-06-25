@@ -1,5 +1,6 @@
 package com.barbusya.android.weatherapp.repo
 
+import android.annotation.SuppressLint
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -48,6 +49,7 @@ class WeatherFetcher {
         return formatter.format(timeInMillies?.toLong()?.times(1000))
     }
 
+
     private fun fetchWeatherMetadata(weatherRequest: Call<WeatherResponse>):
             LiveData<MutableList<String>> {
         val responseLiveData: MutableLiveData<MutableList<String>> = MutableLiveData()
@@ -67,24 +69,17 @@ class WeatherFetcher {
                 val current: Current? = weatherResponse?.current
                 val forecast: Forecast? = weatherResponse?.forecast
                 val currentCondition: CurrentCondition? = current?.currentCondition
-                var forecastDays: List<ForecastDays> =
+                val forecastDays: List<ForecastDays> =
                     forecast?.forecastDays ?: mutableListOf()
-                var days: Days? = forecastDays[0].days
-                val weatherItem = WeatherItem(
-                    location = location?.city.toString(),
-                    localTime = getNormalDate(location?.localTime),
-                    currentTemperature = current?.temperature.toString() + "°",
-                    currentConditionText = currentCondition?.currentConditionText.toString(),
-                    maxTemp = days?.maxTempC.toString() + "°",
-                    minTemp = days?.minTempC.toString()  + "°",
-                )
-                responseLiveData.value = mutableListOf<String>(
-                    weatherItem.component1(),
-                    weatherItem.component2(),
-                    weatherItem.component3(),
-                    weatherItem.component4(),
-                    weatherItem.component5(),
-                    weatherItem.component6(),
+
+                responseLiveData.value = mutableListOf(
+                    location?.city.toString(),
+                    getNormalDate(location?.localTime),
+                    current?.temperature?.toInt().toString() + "°",
+                    currentCondition?.currentConditionText.toString(),
+                    current?.feelsLike?.toInt().toString() + "°",
+                    forecastDays[0].day?.maxTempC?.toInt().toString() + "°",
+                    forecastDays[0].day?.minTempC?.toInt().toString()  + "°",
                 )
             }
         })

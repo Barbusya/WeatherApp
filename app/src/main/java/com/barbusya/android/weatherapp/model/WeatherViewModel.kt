@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.*
 import com.barbusya.android.weatherapp.repo.QueryPreferences
 import com.barbusya.android.weatherapp.repo.WeatherFetcher
+import kotlinx.coroutines.launch
 
 class WeatherViewModel(private val app: Application) : AndroidViewModel(app) {
 

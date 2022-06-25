@@ -4,28 +4,28 @@ import com.google.gson.annotations.SerializedName
 
 data class Forecast (
     @SerializedName("forecastday")
-    var forecastDays: List<ForecastDays>? = null
+    val forecastDays: List<ForecastDays>? = null
 )
 
 data class ForecastDays(
     @SerializedName("date_epoch")
-    var date: Int = 0,
+    val date: Int = 0,
     @SerializedName("day")
-    var days: Days? = null,
+    val day: Day? = null,
     @SerializedName("hour")
-    var hours: List<Hours>? = null,
+    val hours: List<Hours>? = null,
 )
 
-data class Days (
+data class Day (
     @SerializedName("maxtemp_c")
-    var maxTempC: Int = 0,
+    val maxTempC: Float = 0f,
     @SerializedName("mintemp_c")
-    var minTempC: Int = 0,
+    val minTempC: Float = 0f,
 )
 
 data class Hours(
     @SerializedName("time_epoch")
-    var hoursTime: Int = 0,
+    val hoursTime: Float = 0f,
     @SerializedName("temp_c")
-    var hoursTempC: Int = 0,
+    val hoursTempC: Float = 0f,
 )
