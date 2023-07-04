@@ -1,4 +1,4 @@
-package com.barbusya.android.weatherapp.screens
+package com.barbusya.android.weatherapp.presentation
 
 import androidx.fragment.app.Fragment
 import by.kirich1409.viewbindingdelegate.viewBinding

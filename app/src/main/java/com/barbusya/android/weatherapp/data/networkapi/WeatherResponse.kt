@@ -1,4 +1,4 @@
-package com.barbusya.android.weatherapp.networkapi
+package com.barbusya.android.weatherapp.data.networkapi
 
 import com.barbusya.android.weatherapp.data.Current
 import com.barbusya.android.weatherapp.data.Forecast

@@ -1,4 +1,4 @@
-package com.barbusya.android.weatherapp.networkapi
+package com.barbusya.android.weatherapp.data.networkapi
 
 import retrofit2.Call
 import retrofit2.http.GET

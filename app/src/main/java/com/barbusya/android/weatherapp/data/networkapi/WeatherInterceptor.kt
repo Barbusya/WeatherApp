@@ -1,4 +1,4 @@
-package com.barbusya.android.weatherapp.networkapi
+package com.barbusya.android.weatherapp.data.networkapi
 
 import okhttp3.HttpUrl
 import okhttp3.Interceptor

@@ -1,13 +1,9 @@
-package com.barbusya.android.weatherapp.repo
+package com.barbusya.android.weatherapp.data.networkapi
 
-import android.annotation.SuppressLint
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.barbusya.android.weatherapp.data.*
-import com.barbusya.android.weatherapp.networkapi.WeatherApi
-import com.barbusya.android.weatherapp.networkapi.WeatherInterceptor
-import com.barbusya.android.weatherapp.networkapi.WeatherResponse
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Callback
@@ -36,11 +32,11 @@ class WeatherFetcher {
         weatherApi = retrofit.create(WeatherApi::class.java)
     }
 
-    fun fetchWeather():  LiveData<MutableList<String>>{
+    fun fetchWeather(): LiveData<MutableList<String>> {
         return fetchWeatherMetadata(weatherApi.fetchWeather("Kazan"))
     }
 
-    fun searchWeather(query: String):  LiveData<MutableList<String>>{
+    fun searchWeather(query: String): LiveData<MutableList<String>> {
         return fetchWeatherMetadata(weatherApi.searchWeather(query))
     }
 

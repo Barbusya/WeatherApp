@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/fragmentWeather"
-        android:name="com.barbusya.android.weatherapp.screens.WeatherFragment"
+        android:name="com.barbusya.android.weatherapp.presentation.WeatherFragment"
         android:label="FragmentWeather" >
         <action
             android:id="@+id/action_fragmentWeather_to_fragmentFavoriteLocations"
@@ -14,6 +14,6 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentFavoriteLocations"
-        android:name="com.barbusya.android.weatherapp.screens.FavoriteLocationsFragment"
+        android:name="com.barbusya.android.weatherapp.presentation.FavoriteLocationsFragment"
         android:label="FragmentFavoriteLocations" />
 </navigation>

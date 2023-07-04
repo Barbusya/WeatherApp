@@ -1,10 +1,9 @@
-package com.barbusya.android.weatherapp.model
+package com.barbusya.android.weatherapp.presentation
 
 import android.app.Application
 import androidx.lifecycle.*
-import com.barbusya.android.weatherapp.repo.QueryPreferences
-import com.barbusya.android.weatherapp.repo.WeatherFetcher
-import kotlinx.coroutines.launch
+import com.barbusya.android.weatherapp.data.QueryPreferences
+import com.barbusya.android.weatherapp.data.networkapi.WeatherFetcher
 
 class WeatherViewModel(private val app: Application) : AndroidViewModel(app) {
 

@@ -1,4 +1,4 @@
-package com.barbusya.android.weatherapp.screens
+package com.barbusya.android.weatherapp.presentation
 
 import android.os.Bundle
 import android.util.Log
@@ -11,12 +11,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.barbusya.android.weatherapp.R
-import com.barbusya.android.weatherapp.model.WeatherViewModel
 import com.barbusya.android.weatherapp.databinding.FragmentWeatherBinding
 
 private const val TAG = "WeatherFragment"
 
-class WeatherFragment: Fragment(R.layout.fragment_weather) {
+
+class WeatherFragment : Fragment(R.layout.fragment_weather) {
 
     private val binding by viewBinding(FragmentWeatherBinding::bind)
 
@@ -33,7 +33,8 @@ class WeatherFragment: Fragment(R.layout.fragment_weather) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         weatherViewModel.weatherItemLiveData.observe(
-            viewLifecycleOwner) { weather ->
+            viewLifecycleOwner
+        ) { weather ->
             binding.location.text = weather[0]
             binding.data.text = weather[1]
             binding.temp.text = weather[2]
@@ -41,7 +42,7 @@ class WeatherFragment: Fragment(R.layout.fragment_weather) {
             binding.feelsLikeTemp.text = weather[4]
             binding.maxTemp.text = weather[5]
             binding.minTemp.text = weather[6]
-            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -73,7 +74,7 @@ class WeatherFragment: Fragment(R.layout.fragment_weather) {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when(item.itemId) {
+        return when (item.itemId) {
             R.id.menu_item_clear -> {
                 weatherViewModel.fetchWeather("")
                 true
